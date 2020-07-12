@@ -1,6 +1,7 @@
 package fr.le7o.spring5recipeapp.domain;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Recipe {
@@ -18,6 +19,11 @@ public class Recipe {
     //todo add
     //private Difficulty difficulty;
     //Permet dé dépasser la limitation de tailles par défaut
+
+    //MAJ (108)
+    @OneToMany(cascade= CascadeType.ALL, mappedBy = "recipe")
+    Set<Ingredient> ingredients;
+
     @Lob
     private Byte[] image;
 
@@ -86,6 +92,14 @@ public class Recipe {
 
     public void setDirections(String directions) {
         this.directions = directions;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 
     public Byte[] getImage() {
