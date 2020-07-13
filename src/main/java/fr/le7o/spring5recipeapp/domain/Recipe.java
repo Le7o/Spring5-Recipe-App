@@ -138,6 +138,14 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+        //Maj (116)
+        notes.setRecipe(this);
+    }
+    //Maj (116)
+    public Recipe addIngredient(Ingredient ingredient){
+        ingredient.setRecipe(this);
+        this.ingredients.add(ingredient);
+        return this;
     }
 
     public Set<Category> getCategories() {
